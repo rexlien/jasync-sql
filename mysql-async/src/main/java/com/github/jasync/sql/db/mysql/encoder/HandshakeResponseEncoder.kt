@@ -7,6 +7,7 @@ import com.github.jasync.sql.db.mysql.message.client.HandshakeResponseMessage
 import com.github.jasync.sql.db.mysql.util.CharsetMapper
 import com.github.jasync.sql.db.mysql.util.MySQLIO.CLIENT_CONNECT_ATTRS
 import com.github.jasync.sql.db.mysql.util.MySQLIO.CLIENT_CONNECT_WITH_DB
+import com.github.jasync.sql.db.mysql.util.MySQLIO.CLIENT_FOUND_ROWS
 import com.github.jasync.sql.db.mysql.util.MySQLIO.CLIENT_MULTI_RESULTS
 import com.github.jasync.sql.db.mysql.util.MySQLIO.CLIENT_PLUGIN_AUTH
 import com.github.jasync.sql.db.mysql.util.MySQLIO.CLIENT_PROTOCOL_41
@@ -43,7 +44,8 @@ class HandshakeResponseEncoder(val charset: Charset, val charsetMapper: CharsetM
                 CLIENT_PROTOCOL_41 or
                 CLIENT_TRANSACTIONS or
                 CLIENT_MULTI_RESULTS or
-                CLIENT_SECURE_CONNECTION
+                CLIENT_SECURE_CONNECTION or
+                CLIENT_FOUND_ROWS
 
         if (m.database != null) {
             clientCapabilities = clientCapabilities or CLIENT_CONNECT_WITH_DB
